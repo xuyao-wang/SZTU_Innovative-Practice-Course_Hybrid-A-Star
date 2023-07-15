@@ -75,7 +75,7 @@ function curv = PJcurvature(x,y)
     h = [h1 h1(end)];
     ht = h;
      
-    y1 = gradient(y)./ht;
+    y1 = gradient(y)./ht;%%y的梯度除以ht，得到曲线在每个店的曲率值
     y2 = gradient(y1)./ht;
-    curv = abs(y2)./sqrt((1+y1.^2).^3);
+    curv = abs(y2)./sqrt((1+y1.^2).^3);%%计算曲率
 end

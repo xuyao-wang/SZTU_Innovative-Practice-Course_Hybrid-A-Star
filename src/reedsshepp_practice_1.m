@@ -36,13 +36,13 @@ close;
 
 
 % 多目标位置
-reedsConnObj = reedsSheppConnection;
-reedsConnObj.MinTurningRadius = 6;
+reedsConnObj = reedsSheppConnection;  %%使用默认属性值创建对象
+reedsConnObj.MinTurningRadius = 6;  %%最小转弯半径为6
 %reedsConnObj = reedsSheppConnection('DisabledPathTypes',{'LpRnLp'});
 
 startPose = [0 0 -pi/2];
 for i=0:10
-    goalPose = [sin(pi/5*i)*10 cos(pi/5*i)*10 -pi/5*i+pi/2+0.1];
+    goalPose = [sin(pi/5*i)*10 cos(pi/5*i)*10 -pi/5*i+pi/2+0.1];%%目标位置
     [pathSegObj,pathCosts] = connect(reedsConnObj,startPose,goalPose);
     show(pathSegObj{1})
     hold on;
@@ -71,6 +71,7 @@ function V = car_plot(pose)
     cos_theta = cos(theta);
     sin_theta = sin(theta);
     vehicle_half_width = vehicle_lb * 0.5;
+    %% 以后轴中点为原点，建立车辆坐标系
     AX = x + (vehicle_lf + vehicle_lw) * cos_theta - vehicle_half_width * sin_theta;
     BX = x + (vehicle_lf + vehicle_lw) * cos_theta + vehicle_half_width * sin_theta;
     CX = x - vehicle_lr * cos_theta + vehicle_half_width * sin_theta;

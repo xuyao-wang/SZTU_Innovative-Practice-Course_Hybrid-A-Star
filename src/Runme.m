@@ -1,11 +1,11 @@
 % clc;clear;cla;close
 close;
 %% 设置基本参数
-k = 0.1;  % look forward gain
+k = 0.1;  % look forward gain观测前向增益
 Kp = 1.0 ; % speed propotional gain
 dt = 0.1  ;% 仿真步长[s]
 Lfc = 1; % 纯跟踪基础预瞄距离
-target_speed = 10/3.6; % 目标速度
+target_speed = 10/3.6; % 目标速度 单位m/s
 % 车辆参数
 vehicle_lw = 2.6; % wheelbase 轴距 m
 vehicle_lf = 0.96; % front hang length 前悬长度
@@ -14,7 +14,7 @@ vehicle_lb = 2; % width 车宽
 
 %% 规划模块提供路径
 cx = 0:0.1:100; % sampling interception from 0 to 100, with step 0.1
-for i = 1:500% here we create a original reference line, which the vehicle should always follow when there is no obstacles;
+for i = 1:500  % here we create a original reference line, which the vehicle should always follow when there is no obstacles;
     cy(i) = -sin(cx(i)/10)*cx(i)/8;
 end
 for i = 501: length(cx)

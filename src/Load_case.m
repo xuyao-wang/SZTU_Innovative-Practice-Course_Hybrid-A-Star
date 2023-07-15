@@ -26,16 +26,16 @@ for ii = 1 : size(obstacle, 2)
     x_ub = max(V.x);
     y_lb = min(V.y);
     y_ub = max(V.y);
-    [Nmin_x, Nmin_y] = ConvertXYToIndex(x_lb,y_lb);
+    [Nmin_x, Nmin_y] = ConvertXYToIndex(x_lb,y_lb); %%边界坐标转换为索引坐标
     [Nmax_x, Nmax_y] = ConvertXYToIndex(x_ub,y_ub);
     for jj = Nmin_x : Nmax_x
         for kk = Nmin_y : Nmax_y
-            if (costmap(jj,kk) == 1)
+            if (costmap(jj,kk) == 1) %%已经是障碍物，则进入障碍物
                 continue;
             end
-            cur_x = xmin + (jj - 1) * params_.hybrid_astar.dx;
+            cur_x = xmin + (jj - 1) * params_.hybrid_astar.dx; %%当前位置的实际坐标
             cur_y = ymin + (kk - 1) * params_.hybrid_astar.dy;
-            if (inpolygon(cur_x, cur_y, obstacle{ii}.x, obstacle{ii}.y) == 1)
+            if (inpolygon(cur_x, cur_y, obstacle{ii}.x, obstacle{ii}.y) == 1) %%判断障碍物是否在边界内
                 costmap(jj,kk) = 1;
             end
         end

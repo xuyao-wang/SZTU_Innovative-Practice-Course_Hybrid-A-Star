@@ -19,11 +19,11 @@ params_.vehicle.r2p = 0.25 * params_.vehicle.length - params_.vehicle.lr; % 后�
 params_.vehicle.f2p = 0.75 * params_.vehicle.length - params_.vehicle.lr; % 前圆盘圆心和后轴中心的距离
 params_.vehicle.vmax = 1.0; % 最大线速度 p4.0 c2.5
 params_.vehicle.amax = 0.5; % 最大线加速度 p4.0 c1
-params_.vehicle.phymax = 0.7; % 前轮最大转角， p0.85， c0.75
+params_.vehicle.phymax = 0.7; % 前轮最大转角，车辆最大横摆角度 p0.85， c0.75
 params_.vehicle.wmax = 0.7; % 前轮最大转弯角速度 p1，
 params_.vehicle.kappa_max = tan(params_.vehicle.phymax) / params_.vehicle.lw; % 曲率=1/半径=tan(车轮转角)/轴距
 params_.vehicle.turning_radius_min = abs(1.0 / params_.vehicle.kappa_max); % 最小转弯半径
-params_.vehicle.threshold_s = (params_.vehicle.vmax^2) / params_.vehicle.amax;
+params_.vehicle.threshold_s = (params_.vehicle.vmax^2) / params_.vehicle.amax;% 达到最大速度需要的路径距离
 % 混合 A* 分辨率
 params_.hybrid_astar.dx = 0.1; % p0.4
 params_.hybrid_astar.dy = 0.1; % p0.4

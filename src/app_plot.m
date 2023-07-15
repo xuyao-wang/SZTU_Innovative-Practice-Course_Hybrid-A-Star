@@ -25,7 +25,7 @@ scatter(ax,case_data.goal_pose(1),case_data.goal_pose(2),"g",'filled');
 % costmap
 
 % 如果有停车位则绘制
-if plt.park && (~isempty(case_data.parking))
+if plt.park && (~isempty(case_data.parking)) %检查是否需要绘制停车位线框，且确保停车位数据不为空
     disp(['绘制停车位线框']);
     for i=1:length(case_data.parking)
         park = case_data.parking{i};
