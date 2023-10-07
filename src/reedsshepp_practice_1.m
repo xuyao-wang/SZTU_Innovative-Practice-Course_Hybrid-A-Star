@@ -39,17 +39,19 @@ close;
 reedsConnObj = reedsSheppConnection;  %%使用默认属性值创建对象
 reedsConnObj.MinTurningRadius = 6;  %%最小转弯半径为6
 %reedsConnObj = reedsSheppConnection('DisabledPathTypes',{'LpRnLp'});
+%RS曲线可生成具有最小曲率的路径
 
 startPose = [0 0 -pi/2];
 for i=0:10
-    goalPose = [sin(pi/5*i)*10 cos(pi/5*i)*10 -pi/5*i+pi/2+0.1];%%目标位置
-    [pathSegObj,pathCosts] = connect(reedsConnObj,startPose,goalPose);
+    goalPose = [sin(pi/5*i)*10 cos(pi/5*i)*10 -pi/5*i+pi/2+0.1];%%目标位置，生成目标位姿，包含x、y、theta
+    [pathSegObj,pathCosts] = connect(reedsConnObj,startPose,goalPose);%%计算连接两个位姿的有效路径段
+    %%connect函数是用于执行RS路径连接的函数
     show(pathSegObj{1})
     hold on;
     % 绘制车辆
     V = car_plot(startPose);
     plot(V.x, V.y, 'r', 'LineWidth', 2);
-    scatter(goalPose(1),goalPose(2),"r",'filled');
+    scatter(goalPose(1),goalPose(2),"r",'filled');%scatter函数用于绘制散点图
     V = car_plot(goalPose);
     plot(V.x, V.y, 'g', 'LineWidth', 2);
     scatter(goalPose(1),goalPose(2),"g",'filled');

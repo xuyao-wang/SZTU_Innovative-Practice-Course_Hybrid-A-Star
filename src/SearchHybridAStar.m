@@ -35,6 +35,6 @@ x = path(1:end,1);
 y = path(1:end,2);
 theta = path(1:end,3);
 
-toc;
+toc;%停止计时器并获取执行时间
 end
 
